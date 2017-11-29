@@ -2,6 +2,11 @@
 <html>
 	<head>
 		<title>Resume Generator</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
@@ -9,27 +14,27 @@
 	    <h1>HTML Resume Creator</h1>
 	    
 	    <!-- REQUIRED: Personal (email, phone, profession, address) -->
-	    <div class="segment" id="personal">
+	    <div class="segment form-group" id="personal">
 	    	<h2>Personal Info</h2>
-		    <input type="text" placeholder="Name">
-		    <input type="text" placeholder="Professional Title">
-		    <input type="text" placeholder="Phone">
-		    <input type="text" placeholder="Email">
+		    <input type="text" class="form-control" placeholder="Name">
+		    <input type="text" class="form-control" placeholder="Professional Title">
+		    <input type="text" class="form-control" placeholder="Phone">
+		    <input type="text" class="form-control" placeholder="Email">
 		</div>
 
-		<div class="segment">
+		<div class="segment form-group">
 	    	<h2>Personal Links</h2>
 		    <!-- Optional - LinkedIn, GitHub -->
-		    <input type="text" placeholder="Website URL">
-		    <input type="text" placeholder="LinkedIn">
-		    <input type="text" placeholder="GitHub">
+		    <input type="text" class="form-control" placeholder="Website URL">
+		    <input type="text" class="form-control" placeholder="LinkedIn">
+		    <input type="text" class="form-control" placeholder="GitHub">
 	    </div>
 
-	    <div class="segment" id="education">
+	    <div class="segment form-group" id="education">
 	    	<h2>Education</h2>
 		    <!-- Education -->
-		    <input type="text" placeholder="Bachelor's Major">
-		    <input type="text" placeholder="Master's Major">
+		    <input type="text" class="form-control" placeholder="Bachelor's Major">
+		    <input type="text" class="form-control" placeholder="Master's Major">
 		</div>
 
 	    <!-- Languages -->
@@ -37,30 +42,40 @@
 	    <!-- Career Summary -->
 <!-- 	    <div class="segment" id="education">
 	    	<h2>Education</h2>
-		    <input type="text" placeholder="Bachelor's Major">
-		    <input type="text" placeholder="Master's Major">
+		    <input type="text" class="form-control" placeholder="Bachelor's Major">
+		    <input type="text" class="form-control" placeholder="Master's Major">
 		</div> -->
 
 	    <!-- Work Experience -->
-	    <div class="segment" id="experience">
+	    <div class="segment form-group" id="experience">
 	    	<h2>Experience</h2>
-		    <input type="text" placeholder="Job Title">
-		    <input type="text" placeholder="Company Name">
-		    <input type="text" placeholder="Start Date">
-		    <input type="text" placeholder="End Date">
-		    <input type="text" placeholder="Job Description">
+		    <input type="text" class="form-control" placeholder="Job Title">
+		    <input type="text" class="form-control" placeholder="Company Name">
+		    <input type="text" class="form-control" placeholder="Start Date">
+		    <input type="text" class="form-control" placeholder="End Date">
+		    <input type="text" class="form-control" placeholder="Job Description">
 		</div>
 	    <!-- Projects -->
-	    <div class="segment" id="education">
+	    <div class="segment form-group" id="education">
 	    	<h2>Projects</h2>
-		    <input type="text" placeholder="Bachelor's Major">
-		    <input type="text" placeholder="Master's Major">
+		    <input type="text" class="form-control" placeholder="Bachelor's Major">
+		    <input type="text" class="form-control" placeholder="Master's Major">
 		</div>
 	    <!-- Skills -->
-	    <div class="segment" id="education">
+	    <div class="segment form-group" id="education">
 	    	<h2>Skills</h2>
-		    <input type="text" placeholder="Bachelor's Major">
-		    <input type="text" placeholder="Master's Major">
+		    <input type="text" class="form-control" placeholder="Bachelor's Major">
+		    <input type="text" class="form-control" placeholder="Master's Major">
+
+			<button>Submit</button>
 		</div>
+	    <!-- Color Scheme / Profile Choice -->
+	    <!-- <div class="segment form-group" id="education">
+	    	<h2>Skills</h2>
+		    <input type="text" class="form-control" placeholder="Bachelor's Major">
+		    <input type="text" class="form-control" placeholder="Master's Major">
+		</div> -->
+
+
 	</body>
 </html>
