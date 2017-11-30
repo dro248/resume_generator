@@ -38,6 +38,23 @@ body{
 	margin-bottom: 5em;
 }
 
+#generateButton {
+	background-color: #1289ff;
+	color: white;
+	border-style: none;
+	padding: 15px 20px;
+	margin-top: 15px;
+	transition: background-color .35s;
+}
+
+#generateButton:hover{
+	background-color: #337bc3;
+}
+
+#generateButton:active {
+	background-color: #00468b;
+}
+
 
 
 /* PERSONAL INFO STYLING */
