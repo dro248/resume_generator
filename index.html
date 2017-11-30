@@ -91,5 +91,15 @@
 				document.body.removeChild(element);
 			}
 		</script>
+
+
+
+
+		<script type="text/javascript">
+			// Confirms that the user actually wants to go back|forward|refresh
+			window.onbeforeunload = function() {
+			    return "Leaving this page will reset the wizard";
+			}; 
+		</script>
 	</body>
 </html>
