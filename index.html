@@ -47,11 +47,11 @@
 ************************-->
             <div class="segment form-group" id="education">
                 <h2>Education</h2>
-                <ul>
+                <ul id="educationList">
                     <li>
                         <div>
                             <div class="left">
-                                <button class="removeItem">X</button>
+                                <button class="removeItem" onclick="removeEducationItem(this)">X</button>
                             </div>
                             <div class="right">
                                 <select class="form-control degreeType">
@@ -66,7 +66,7 @@
                     </li>
                 </ul>
 
-                <button class="addItem">+ Add Education</button>
+                <button class="addItem" onclick="addEducationItem()">+ Add Education</button>
             </div>
 
 
