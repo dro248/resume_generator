@@ -103,23 +103,20 @@
 ************************-->
             <div class="segment form-group" id="projects">
                 <h2>Projects</h2>
-                <ul>
+                <ul id="projectList">
                     <li>
                         <div class="experienceItem">
                             <div class="left">
-                                <button class="removeItem">X</button>
+                                <button class="removeItem" onclick="removeProjectItem(this)">X</button>
                             </div>
                             <div class="right">
-                                <input type="text" class="form-control jobTitle" placeholder="Job Title">
-                                <input type="text" class="form-control companyName" placeholder="Company Name"><br>
-                                <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
-                                <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
-                                <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
+                                <input type="text" class="form-control" placeholder="Project Title"><br>
+                                <textarea class="form-control" placeholder="Project Description"></textarea>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <button class="addItem">+ Add Project</button>
+                <button class="addItem" onclick="addProjectItem()">+ Add Project</button>
             </div>
 
 
@@ -127,13 +124,13 @@
 <!-- **********************
         SKILLS 
 ************************-->
-            <div class="segment form-group" id="education">
+            <div class="segment form-group" id="skills">
                 <h2>Skills</h2>
-                <ul>
+                <ul id="skillList">
                     <li>
                         <div class="skillItem">
                             <div class="left">
-                                <button class="removeItem">X</button>
+                                <button class="removeItem" onclick="removeSkillItem(this)">X</button>
                             </div>
                             <div class="right">
                                 <input type="text" class="form-control jobTitle" placeholder="Job Title">
@@ -142,7 +139,7 @@
                         </div>
                     </li>
                 </ul>
-                <button class="addItem">+ Add Skill</button>
+                <button class="addItem" onclick="addSkillItem()">+ Add Skill</button>
             </div>
             <button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
         </div>

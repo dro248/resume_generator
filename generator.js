@@ -25,7 +25,6 @@ function addEducationItem(){
 function removeEducationItem(education_element){
 	let educationList = document.getElementById("educationList")
 	let listItem = education_element.parentNode.parentNode.parentNode
-
 	educationList.removeChild(listItem)
 }
 
@@ -48,13 +47,33 @@ function addExperienceItem(){
                                 <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>\
                             </div>\
                         </div>'
-
     experienceList.appendChild(newItem)
 }
 
 function removeExperienceItem(experience_element){
 	let experienceList = document.getElementById("experienceList")
 	let listItem = experience_element.parentNode.parentNode.parentNode
-
 	experienceList.removeChild(listItem)
+}
+
+
+// PROJECTS
+
+function addProjectItem(){
+	let projectList = document.getElementById("projectList")
+}
+
+function removeProjectItem(project_element){
+	let projectList = document.getElementById("projectList")
+}
+
+
+// SKILLS
+
+function addSkillItem(){
+	let skillList = document.getElementById('skillList')
+}
+
+function removeSkillItem(skill_element){
+	let skillList = document.getElementById('skillList')
 }
