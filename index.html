@@ -33,45 +33,104 @@
 			    <input type="text" class="form-control" placeholder="GitHub">
 		    </div>
 
+
+
+
+		    <!-- **********************
+		    		Education 
+		    ************************-->
+
 		    <div class="segment form-group" id="education">
 		    	<h2>Education</h2>
-			    <!-- Education -->
-			    <input type="text" class="form-control" placeholder="Bachelor's Major">
-			    <input type="text" class="form-control" placeholder="Master's Major">
+			    <ul>
+			    	<li>
+					    <div>
+					    	<button class="removeItem">X</button>
+					    	<select class="form-control degreeType">
+					    		<option value="bachelors">Bachelors</option>
+				    			<option value="masters">Masters</option>
+				    			<option value="phd">Ph.D.</option>
+					    	</select>
+						    <input type="text" class="form-control schoolName" placeholder="School Name">
+						    <input type="text" class="form-control degreeName" placeholder="Degree Name">
+					    </div>
+			    	</li>
+			    </ul>
+
+			    <button class="addItem">Add Education</button>
 			</div>
 
-		    <!-- Languages -->
 
-		    <!-- Career Summary -->
-	<!-- 	    <div class="segment" id="education">
-		    	<h2>Education</h2>
-			    <input type="text" class="form-control" placeholder="Bachelor's Major">
-			    <input type="text" class="form-control" placeholder="Master's Major">
-			</div> -->
+
 
 		    <!-- Work Experience -->
 		    <div class="segment form-group" id="experience">
 		    	<h2>Experience</h2>
-			    <input type="text" class="form-control" placeholder="Job Title">
-			    <input type="text" class="form-control" placeholder="Company Name">
-			    <input type="date" class="form-control" placeholder="Start Date">
-			    <input type="date" class="form-control" placeholder="End Date">
-			    <input type="text" class="form-control" placeholder="Job Description">
+			    <ul>
+			    	<li>
+					    <div class="experienceItem">
+					    	<div class="left">
+					    		<button class="removeItem">X</button>
+					    	</div>
+					    	<div class="right">
+						    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
+							    <input type="text" class="form-control companyName" placeholder="Company Name"><br>
+							    <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
+							    <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
+							    <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
+					    	</div>
+					    </div>
+			    	</li>
+			    </ul>
+			    <button class="addItem">Add Experience</button>
 			</div>
+
+
+
+
+
 		    <!-- Projects -->
-		    <div class="segment form-group" id="education">
+		    <div class="segment form-group" id="projects">
 		    	<h2>Projects</h2>
-			    <input type="text" class="form-control" placeholder="Bachelor's Major">
-			    <input type="text" class="form-control" placeholder="Master's Major">
+			    <ul>
+			    	<li>
+					    <div class="experienceItem">
+					    	<div class="left">
+					    		<button class="removeItem">X</button>
+					    	</div>
+					    	<div class="right">
+						    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
+							    <input type="text" class="form-control companyName" placeholder="Company Name"><br>
+							    <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
+							    <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
+							    <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
+					    	</div>
+					    </div>
+			    	</li>
+			    </ul>
+			    <button class="addItem">Add Project</button>
 			</div>
+
+
+
+
+
+
 		    <!-- Skills -->
 		    <div class="segment form-group" id="education">
 		    	<h2>Skills</h2>
-			    <input type="text" class="form-control" placeholder="Bachelor's Major">
-			    <input type="text" class="form-control" placeholder="Master's Major">
-
-				<button onclick="downloadFile()" id="generateButton">Generate File</button>
+			    <ul>
+			    	<li>
+					    <div class="skillItem">
+					    	<button class="removeItem">X</button>
+					    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
+						    <input type="range" class="skillSlider" min="1" max="100" value="1">
+					    </div>
+			    	</li>
+			    </ul>
+			    <button class="addItem">Add Skill</button>
 			</div>
+			<button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
 		</div>
 
 
