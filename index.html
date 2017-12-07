@@ -1,164 +1,178 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Resume Generator</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-			
-	    <h1 id="logoText">HTML Resume Creator</h1>
+    <head>
+        <title>Resume Generator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+            
+        <h1 id="logoText">HTML Resume Creator</h1>
 
-	    <div id="form">
-	    
-		    <!-- REQUIRED: Personal (email, phone, profession, address) -->
-		    <div class="segment form-group" id="personal">
-		    	<h2>Personal Info</h2>
-			    <input type="text" class="form-control" id="name" placeholder="Name">
-			    <input type="text" class="form-control" id="title" placeholder="Professional Title">
-			    <input type="text" class="form-control" id="phone" placeholder="Phone">
-			    <input type="text" class="form-control" id="email" placeholder="Email">
-			</div>
-
-			<div class="segment form-group">
-		    	<h2>Personal Links</h2>
-			    <!-- Optional - LinkedIn, GitHub -->
-			    <input type="text" class="form-control" placeholder="Website URL">
-			    <input type="text" class="form-control" placeholder="LinkedIn">
-			    <input type="text" class="form-control" placeholder="GitHub">
-		    </div>
+        <div id="form">
+        
+<!-- **********************
+        PERSONAL (REQ) 
+************************-->
+            <!-- REQUIRED: Personal (email, phone, profession, address) -->
+            <div class="segment form-group" id="personal">
+                <h2>Personal Info</h2>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+                <input type="text" class="form-control" id="title" placeholder="Professional Title">
+                <input type="text" class="form-control" id="phone" placeholder="Phone">
+                <input type="text" class="form-control" id="email" placeholder="Email">
+            </div>
 
 
-
-
-		    <!-- **********************
-		    		Education 
-		    ************************-->
-
-		    <div class="segment form-group" id="education">
-		    	<h2>Education</h2>
-			    <ul>
-			    	<li>
-					    <div>
-					    	<button class="removeItem">X</button>
-					    	<select class="form-control degreeType">
-					    		<option value="bachelors">Bachelors</option>
-				    			<option value="masters">Masters</option>
-				    			<option value="phd">Ph.D.</option>
-					    	</select>
-						    <input type="text" class="form-control schoolName" placeholder="School Name">
-						    <input type="text" class="form-control degreeName" placeholder="Degree Name">
-					    </div>
-			    	</li>
-			    </ul>
-
-			    <button class="addItem">Add Education</button>
-			</div>
+<!-- **********************
+        PERSONAL (OPT) 
+************************-->
+            <div class="segment form-group">
+                <h2>Personal Links</h2>
+                <!-- Optional - LinkedIn, GitHub -->
+                <input type="text" class="form-control" placeholder="Website URL">
+                <input type="text" class="form-control" placeholder="LinkedIn">
+                <input type="text" class="form-control" placeholder="GitHub">
+            </div>
 
 
 
+<!-- **********************
+        Education 
+************************-->
+            <div class="segment form-group" id="education">
+                <h2>Education</h2>
+                <ul>
+                    <li>
+                        <div>
+                            <div class="left">
+                                <button class="removeItem">X</button>
+                            </div>
+                            <div class="right">
+                                <select class="form-control degreeType">
+                                    <option value="bachelors">Bachelors</option>
+                                    <option value="masters">Masters</option>
+                                    <option value="phd">Ph.D.</option>
+                                </select>
+                                <input type="text" class="form-control schoolName" placeholder="School Name">
+                                <input type="text" class="form-control degreeName" placeholder="Degree Name">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
-		    <!-- Work Experience -->
-		    <div class="segment form-group" id="experience">
-		    	<h2>Experience</h2>
-			    <ul>
-			    	<li>
-					    <div class="experienceItem">
-					    	<div class="left">
-					    		<button class="removeItem">X</button>
-					    	</div>
-					    	<div class="right">
-						    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
-							    <input type="text" class="form-control companyName" placeholder="Company Name"><br>
-							    <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
-							    <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
-							    <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
-					    	</div>
-					    </div>
-			    	</li>
-			    </ul>
-			    <button class="addItem">Add Experience</button>
-			</div>
+                <button class="addItem">+ Add Education</button>
+            </div>
 
 
 
 
-
-		    <!-- Projects -->
-		    <div class="segment form-group" id="projects">
-		    	<h2>Projects</h2>
-			    <ul>
-			    	<li>
-					    <div class="experienceItem">
-					    	<div class="left">
-					    		<button class="removeItem">X</button>
-					    	</div>
-					    	<div class="right">
-						    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
-							    <input type="text" class="form-control companyName" placeholder="Company Name"><br>
-							    <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
-							    <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
-							    <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
-					    	</div>
-					    </div>
-			    	</li>
-			    </ul>
-			    <button class="addItem">Add Project</button>
-			</div>
-
-
-
+<!-- **********************
+        WORK EXPERIENCE 
+************************-->
+            <div class="segment form-group" id="experience">
+                <h2>Experience</h2>
+                <ul>
+                    <li>
+                        <div class="experienceItem">
+                            <div class="left">
+                                <button class="removeItem">X</button>
+                            </div>
+                            <div class="right">
+                                <input type="text" class="form-control jobTitle" placeholder="Job Title">
+                                <input type="text" class="form-control companyName" placeholder="Company Name"><br>
+                                <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
+                                <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
+                                <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="addItem">+ Add Experience</button>
+            </div>
 
 
 
-		    <!-- Skills -->
-		    <div class="segment form-group" id="education">
-		    	<h2>Skills</h2>
-			    <ul>
-			    	<li>
-					    <div class="skillItem">
-					    	<button class="removeItem">X</button>
-					    	<input type="text" class="form-control jobTitle" placeholder="Job Title">
-						    <input type="range" class="skillSlider" min="1" max="100" value="1">
-					    </div>
-			    	</li>
-			    </ul>
-			    <button class="addItem">Add Skill</button>
-			</div>
-			<button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
-		</div>
-
-
-		<script type="text/javascript">
-			function downloadFile() {
-				filename = "index.html"
-				text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
-
-				var element = document.createElement('a');
-				element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-				element.setAttribute('download', filename);
-
-				element.style.display = 'none';
-				document.body.appendChild(element);
-
-				element.click();
-				document.body.removeChild(element);
-			}
-		</script>
+<!-- **********************
+        PROJECTS 
+************************-->
+            <div class="segment form-group" id="projects">
+                <h2>Projects</h2>
+                <ul>
+                    <li>
+                        <div class="experienceItem">
+                            <div class="left">
+                                <button class="removeItem">X</button>
+                            </div>
+                            <div class="right">
+                                <input type="text" class="form-control jobTitle" placeholder="Job Title">
+                                <input type="text" class="form-control companyName" placeholder="Company Name"><br>
+                                <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
+                                <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
+                                <textarea type="text" class="form-control jobDescription" placeholder="Job Description"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="addItem">+ Add Project</button>
+            </div>
 
 
 
+<!-- **********************
+        SKILLS 
+************************-->
+            <div class="segment form-group" id="education">
+                <h2>Skills</h2>
+                <ul>
+                    <li>
+                        <div class="skillItem">
+                            <div class="left">
+                                <button class="removeItem">X</button>
+                            </div>
+                            <div class="right">
+                                <input type="text" class="form-control jobTitle" placeholder="Job Title">
+                                <input type="range" class="skillSlider" min="1" max="100" value="1">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="addItem">+ Add Skill</button>
+            </div>
+            <button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
+        </div>
 
-		<script type="text/javascript">
-			// Confirms that the user actually wants to go back|forward|refresh
-			window.onbeforeunload = function() {
-			    return "Leaving this page will reset the wizard";
-			}; 
-		</script>
-	</body>
+
+        <script type="text/javascript">
+            function downloadFile() {
+                filename = "index.html"
+                text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
+
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+                document.body.removeChild(element);
+            }
+        </script>
+
+
+
+
+        <script type="text/javascript">
+            // Confirms that the user actually wants to go back|forward|refresh
+/*              window.onbeforeunload = function() {
+                return "Leaving this page will reset the wizard";
+            }; */
+        </script>
+    </body>
 </html>

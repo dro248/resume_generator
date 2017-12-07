@@ -2,6 +2,10 @@ ul {
 	list-style-type: none;
 }
 
+button {
+	outline: none;
+}
+
 body{
 	background: url(https://newevolutiondesigns.com/images/freebies/google-material-design-wallpaper-10.jpg);
 	background-repeat: no-repeat;
@@ -35,7 +39,7 @@ body{
 #form {
 	background-color: rgba(255,255,255, 0.85);
 	padding: 35px 50px;
-	border-radius: 2px;
+	border-radius: 4px;
 	width: 70%;
 	margin: auto;
 	box-shadow: 2px 2px 50px rgba(0,0,0,.3);
@@ -79,6 +83,10 @@ body{
 
 
 /* EDUCATION */
+
+#education input {
+	margin-bottom: 0;
+}
 
 .degreeType {
 	width: 20%;
@@ -138,24 +146,43 @@ body{
 .right {
 	display:inline-block; 
 	width: 90%;
+	border-radius: 10px;
+	border: 1px dotted grey;
+	padding: 5px;
+	margin-left: 15px;
 }
 
 .addItem {
-	display: block;
-    width: 70%;
+    display: block;
+    width: 25%;
+    height: 30pt;
     margin: auto;
     background: darkgrey;
     border: none;
     padding: 5px;
     color: white;
+    border-radius: 4px;
+    transition: all .25s;
+}
+
+.addItem:hover {
+	background-color: grey;
 }
 
 
 .removeItem {
-	width: 25px;
-	height: 25px;
-	padding: 3px;
-	border-radius: 100%;
-	border: 1px solid black;
-	color: black;
+	width: 35px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 100%;
+    border: 1px solid firebrick;
+    background-color: firebrick;
+    filter: opacity(100%);
+	color: white;
+    transition: all .25s;
+}
+
+.removeItem:hover {
+	transform: rotateY(180deg);
+	filter: opacity(70%);
 }
