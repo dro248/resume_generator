@@ -77,11 +77,11 @@
 ************************-->
             <div class="segment form-group" id="experience">
                 <h2>Experience</h2>
-                <ul>
+                <ul id="experienceList">
                     <li>
                         <div class="experienceItem">
                             <div class="left">
-                                <button class="removeItem">X</button>
+                                <button class="removeItem" onclick="removeExperienceItem(this)">X</button>
                             </div>
                             <div class="right">
                                 <input type="text" class="form-control jobTitle" placeholder="Job Title">
@@ -93,7 +93,7 @@
                         </div>
                     </li>
                 </ul>
-                <button class="addItem">+ Add Experience</button>
+                <button class="addItem" onclick="addExperienceItem()">+ Add Experience</button>
             </div>
 
 
