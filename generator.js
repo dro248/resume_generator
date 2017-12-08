@@ -96,7 +96,7 @@ function addSkillItem(){
                                 <button class="removeItem" onclick="removeSkillItem(this)">X</button>\
                             </div>\
                             <div class="right">\
-                                <input type="text" class="form-control jobTitle" placeholder="Job Title">\
+                                <input type="text" class="form-control jobTitle" placeholder="Skill Name">\
                                 <input type="range" class="skillSlider" min="1" max="100" value="1">\
                             </div>\
                         </div>'
@@ -137,9 +137,7 @@ function gatherData(){
                 }
                 myEdList.push(education)
             }
-            alert("hi")
             return myEdList
-            // console.log(myEdList)
         },
 
         "experience": () => {
@@ -151,24 +149,50 @@ function gatherData(){
                     "companyName": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value,
                     "startDate": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[2].value,
                     "endDate": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[3].value,
-                    "jobDescription": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("textArea")[0].value
+                    "jobDescription": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("textarea")[0].value
                 }
                 myExpList.push(experience)
             }
-            console.log(myExpList)
+            return myExpList
+        },
+
+        "projects": () => {
+            const projectList = document.getElementById("projectList").getElementsByTagName("li")
+            let myProjList = []
+            for(let i = 0; i < projectList.length; i++){
+                let project = {
+                    "projectName": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
+                    "projectDescription": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("textarea")[0].value
+                }
+                myProjList.push(project)
+            }
+            return myProjList
+        },
+
+        "skills": () => {
+            const skillList = document.getElementById("skillList").getElementsByTagName("li")
+            let mySkillList = []
+            for(let i = 0; i < skillList.length; i++){
+                // console.log(skillList[i].getElementsByClassName("right")[0].getElementsByTagName("inpu")[0].value)
+                let skill = {
+                    "skillName": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
+                    "skillProficiency": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value
+                }
+                mySkillList.push(skill)
+            }
+            return mySkillList
         }
     }
 }
 
 
 function downloadFile() {
-
     let resume = gatherData()
-    resume.experience()
-    return
+    // resume.skills()
+    // return
 
 
-    filename = "index.html"
+    filename = resume["personalName"] + "_resume.html"
     text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
 
     var element = document.createElement('a');
