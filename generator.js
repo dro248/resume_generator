@@ -61,10 +61,28 @@ function removeExperienceItem(experience_element){
 
 function addProjectItem(){
 	let projectList = document.getElementById("projectList")
+    let newProjectItem = document.createElement("li")
+
+    // Set the innerHTML of the new Project Item
+    newProjectItem.innerHTML = '<div class="experienceItem">\
+                            <div class="left">\
+                                <button class="removeItem" onclick="removeProjectItem(this)">X</button>\
+                            </div>\
+                            <div class="right">\
+                                <input type="text" class="form-control" placeholder="Project Title"><br>\
+                                <textarea class="form-control" placeholder="Project Description"></textarea>\
+                            </div>\
+                        </div>'
+
+    // Add newProjectItem to parent list
+    projectList.appendChild(newProjectItem)
 }
 
 function removeProjectItem(project_element){
 	let projectList = document.getElementById("projectList")
+    let projectItem = project_element.parentNode.parentNode.parentNode
+    // remove projectItem from projectList
+    projectList.removeChild(projectItem)
 }
 
 
@@ -72,8 +90,94 @@ function removeProjectItem(project_element){
 
 function addSkillItem(){
 	let skillList = document.getElementById('skillList')
+    let skillItem = document.createElement("li")
+    skillItem.innerHTML = '<div class="skillItem">\
+                            <div class="left">\
+                                <button class="removeItem" onclick="removeSkillItem(this)">X</button>\
+                            </div>\
+                            <div class="right">\
+                                <input type="text" class="form-control jobTitle" placeholder="Job Title">\
+                                <input type="range" class="skillSlider" min="1" max="100" value="1">\
+                            </div>\
+                        </div>'
+    skillList.appendChild(skillItem)
 }
 
 function removeSkillItem(skill_element){
 	let skillList = document.getElementById('skillList')
+    let skillItem = skill_element.parentNode.parentNode.parentNode
+    skillList.removeChild(skillItem)
+}
+
+
+
+///////////////////////////////
+
+// GATHER data and CREATE HTML page from template
+
+function gatherData(){
+    return {
+        "personalName": document.getElementById("name").value,
+        "personalTitle": document.getElementById("title").value,
+        "personalPhone": document.getElementById("phone").value,
+        "personalEmail": document.getElementById("email").value,
+        "siteUrl": document.getElementById("siteUrl").value,
+        "linkedInUrl": document.getElementById("linkedInUrl").value,
+        "githubUrl": document.getElementById("githubUrl").value,
+        
+        // Education
+        "education": () => {
+            const educationList = document.getElementById("educationList").getElementsByTagName("li")
+            let myEdList = []
+            for(let i = 0; i < educationList.length; i++){
+                let education = {
+                    "degreeType": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("select")[0].value,
+                    "schoolName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
+                    "degreeName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value
+                }
+                myEdList.push(education)
+            }
+            alert("hi")
+            return myEdList
+            // console.log(myEdList)
+        },
+
+        "experience": () => {
+            const experienceList = document.getElementById("experienceList").getElementsByTagName("li")
+            let myExpList = []
+            for(let i = 0; i < experienceList.length; i++){
+                let experience = {
+                    "jobTitle": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
+                    "companyName": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value,
+                    "startDate": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[2].value,
+                    "endDate": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[3].value,
+                    "jobDescription": experienceList[i].getElementsByClassName("right")[0].getElementsByTagName("textArea")[0].value
+                }
+                myExpList.push(experience)
+            }
+            console.log(myExpList)
+        }
+    }
+}
+
+
+function downloadFile() {
+
+    let resume = gatherData()
+    resume.experience()
+    return
+
+
+    filename = "index.html"
+    text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
+
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
 }
