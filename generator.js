@@ -188,9 +188,11 @@ function gatherData(){
 
 function downloadFile() {
     let resume = gatherData()
-    // resume.skills()
-    // return
-
+    resume.education()
+    resume.experience()
+    resume.projects()
+    resume.skills()
+    return
 
     filename = resume["personalName"] + "_resume.html"
     text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
