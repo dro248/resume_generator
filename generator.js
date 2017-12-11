@@ -137,9 +137,9 @@ function gatherData(){
             let myEdList = []
             for(let i = 0; i < educationList.length; i++){
                 let education = {
-                    "degreeType": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("select")[0].value,
-                    "schoolName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
-                    "degreeName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value,
+                    "degreeType": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("select")[0].value.trim(),
+                    "schoolName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value.trim(),
+                    "degreeName": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value.trim(),
                     "startDate": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[2].value,
                     "endDate": educationList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[3].value
                 }
@@ -170,8 +170,8 @@ function gatherData(){
             let myProjList = []
             for(let i = 0; i < projectList.length; i++){
                 let project = {
-                    "projectName": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
-                    "projectDescription": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("textarea")[0].value
+                    "projectName": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value.trim(),
+                    "projectDescription": projectList[i].getElementsByClassName("right")[0].getElementsByTagName("textarea")[0].value.trim()
                 }
                 myProjList.push(project)
             }
@@ -184,24 +184,14 @@ function gatherData(){
             for(let i = 0; i < skillList.length; i++){
                 // console.log(skillList[i].getElementsByClassName("right")[0].getElementsByTagName("inpu")[0].value)
                 let skill = {
-                    "skillName": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value,
-                    "skillProficiency": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value
+                    "skillName": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value.trim(),
+                    "skillProficiency": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value.trim()
                 }
                 mySkillList.push(skill)
             }
             return mySkillList
         }
     }
-}
-
-function generateResumeText(resume){
-    output_text = getTestHTML()
-    output_text = addEducationToResume(resume, output_text)
-    output_text = addExperienceToResume(resume, output_text)
-// TODO: Add the rest of the sections to output_text
-
-
-    return output_text
 }
 
 function addEducationToResume(resume, outputHTML){
@@ -243,13 +233,49 @@ function addExperienceToResume(resume, outputHTML){
     return outputHTML
 }
 
+function addProjectsToResume(resume, outputHTML){
+    gen_text = ""
+
+    resume.experience().forEach((element) => {
+        gen_text += '<div class="item">\
+                        <span class="project-title">'+element["projectName"]+'</span> - <span class="project-tagline">'+element[projectDescription]+'</span>\
+                    </div><!--//item-->\n'
+    })
+    outputHTML = outputHTML.replace('{{PROJECT-ITEMS}}', gen_text)
+    return outputHTML
+}
+
+function addSkillsToResume(resume, outputHTML){
+    gen_text = ""
+
+    resume.experience().forEach((element) => {
+        gen_text += '<div class="item">\
+                        <h3 class="level-title">'+element["skillName"]+'</h3>\
+                        <div class="level-bar">\
+                            <div class="level-bar-inner" data-level="'+element["skillProficiency"]+'%">\
+                            </div>\
+                        </div><!--//level-bar-->\
+                    </div><!--//item-->\n'
+    })
+    outputHTML = outputHTML.replace('{{SKILL-ITEMS}}', gen_text)
+    return outputHTML
+}
+
+function generateResumeText(resume){
+    output_text = getTestHTML()
+    output_text = addEducationToResume(resume, output_text)
+    output_text = addExperienceToResume(resume, output_text)
+    output_text = addProjectsToResume(resume, output_text)
+    output_text = addSkillsToResume(resume, output_text)
+    return output_text
+}
 
 function downloadFile() {
     let resume = gatherData()
-    resume.education()
-    resume.experience()
-    resume.projects()
-    resume.skills()
+    // resume.education()
+    // resume.experience()
+    // resume.projects()
+    // resume.skills()
 
     filename = resume["personalName"] + "_resume.html"
 
@@ -393,18 +419,6 @@ function getTestHTML(){
                                 <h2 class="container-block-title">Education</h2>\
 \
                                 {{EDUCATION-ITEMS}}\
-                                \
-                                <!-- <div class="item">\
-                                    <h4 class="degree">MSc in Computer Science</h4>\
-                                    <h5 class="meta">University of London</h5>\
-                                    <div class="time">2011 - 2012</div>\
-                                </div>\
-                                \
-                                <div class="item">\
-                                    <h4 class="degree">BSc in Applied Mathematics</h4>\
-                                    <h5 class="meta">Bristol University</h5>\
-                                    <div class="time">2007 - 2011</div>\
-                                </div> -->\
 \
                             </div><!--//education-container-->\
                         </div><!--//sidebar-wrapper-->\
@@ -433,25 +447,7 @@ function getTestHTML(){
                             <!-- PROJECTS -->\
                             <section class="section projects-section">\
                                 <h2 class="section-title"><i class="fa fa-archive"></i>Projects</h2>\
-                                <div class="intro">\
-                                    <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>\
-                                </div><!--//intro-->\
-                                <div class="item">\
-                                    <span class="project-title"><a href="#hook">Velocity</a></span> - <span class="project-tagline">A responsive website template designed to help startups promote, market and sell their products.</span>\
-                                </div><!--//item-->\
-                                <div class="item">\
-                                    <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/" target="_blank">DevStudio</a></span> - \
-                                    <span class="project-tagline">A responsive website template designed to help web developers/designers market their services. </span>\
-                                </div><!--//item-->\
-                                <div class="item">\
-                                    <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-startups-tempo/" target="_blank">Tempo</a></span> - <span class="project-tagline">A responsive website template designed to help startups promote their products or services and to attract users &amp; investors</span>\
-                                </div><!--//item-->\
-                                <div class="item">\
-                                    <span class="project-title"><a href="hhttp://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-mobile-apps-atom/" target="_blank">Atom</a></span> - <span class="project-tagline">A comprehensive website template solution for startups/developers to market their mobile apps. </span>\
-                                </div><!--//item-->\
-                                <div class="item">\
-                                    <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-mobile-apps-delta/" target="_blank">Delta</a></span> - <span class="project-tagline">A responsive Bootstrap one page theme designed to help app developers promote their mobile apps</span>\
-                                </div><!--//item-->\
+                                {{PROJECT-ITEMS}}\
                             </section><!--//section-->\
 \
 \
@@ -462,55 +458,8 @@ function getTestHTML(){
                             <section class="skills-section section">\
                                 <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>\
                                 <div class="skillset">\
-                                    <div class="item">\
-                                        <h3 class="level-title">Python &amp; Django</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="98%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                    <div class="item">\
-                                        <h3 class="level-title">Javascript &amp; jQuery</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="98%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                    <div class="item">\
-                                        <h3 class="level-title">Angular</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="98%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                    <div class="item">\
-                                        <h3 class="level-title">HTML5 &amp; CSS</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="95%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                    <div class="item">\
-                                        <h3 class="level-title">Ruby on Rails</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="85%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                    <div class="item">\
-                                        <h3 class="level-title">Sketch &amp; Photoshop</h3>\
-                                        <div class="level-bar">\
-                                            <div class="level-bar-inner" data-level="60%">\
-                                            </div>\
-                                        </div><!--//level-bar-->\
-                                    </div><!--//item-->\
-                                    \
-                                </div>  \
+                                    {{SKILL-ITEMS}}\
+                                </div>\
                             </section><!--//skills-section-->\
                             \
                         </div><!--//main-body-->\
