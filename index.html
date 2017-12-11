@@ -53,17 +53,18 @@
                             </div>
                             <div class="right">
                                 <select class="form-control degreeType">
-                                    <option value="bachelors">Bachelors</option>
-                                    <option value="masters">Masters</option>
-                                    <option value="phd">Ph.D.</option>
+                                    <option value="Bachelors">Bachelors</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="Ph.D.">Ph.D.</option>
                                 </select>
                                 <input type="text" class="form-control schoolName" placeholder="School Name">
                                 <input type="text" class="form-control degreeName" placeholder="Degree Name">
+                                <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
+                                <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
                             </div>
                         </div>
                     </li>
                 </ul>
-
                 <button class="addItem" onclick="addEducationItem()">+ Add Education</button>
             </div>
 
@@ -141,34 +142,6 @@
             </div>
             <button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
         </div>
-
-
-<!--         <script type="text/javascript">
-            function downloadFile() {
-                filename = "index.html"
-                text = "<h1>HELLO WORLD</h1><p>This is a generated html file.</p>"
-
-                var element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
-
-                element.style.display = 'none';
-                document.body.appendChild(element);
-
-                element.click();
-                document.body.removeChild(element);
-            }
-        </script> -->
-
-
-
-
-        <script type="text/javascript">
-            // Confirms that the user actually wants to go back|forward|refresh
-/*              window.onbeforeunload = function() {
-                return "Leaving this page will reset the wizard";
-            }; */
-        </script>
         <script src="generator.js"></script>
     </body>
 </html>
