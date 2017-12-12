@@ -1,3 +1,4 @@
+"use strict"
 
 // Confirms that the user actually wants to go back|forward|refresh
 /*              window.onbeforeunload = function() {
@@ -122,13 +123,13 @@ function removeSkillItem(skill_element){
 
 function gatherData(){
     return {
-        "personalName": document.getElementById("name").value,
-        "personalTitle": document.getElementById("title").value,
-        "personalPhone": document.getElementById("phone").value,
-        "personalEmail": document.getElementById("email").value,
-        "siteUrl": document.getElementById("siteUrl").value,
-        "linkedInUrl": document.getElementById("linkedInUrl").value,
-        "githubUrl": document.getElementById("githubUrl").value,
+        "personalName": document.getElementById("name").value.trim(),
+        "personalTitle": document.getElementById("title").value.trim(),
+        "personalPhone": document.getElementById("phone").value.trim(),
+        "personalEmail": document.getElementById("email").value.trim(),
+        "siteUrl": document.getElementById("siteUrl").value.trim(),
+        "linkedInUrl": document.getElementById("linkedInUrl").value.trim(),
+        "githubUrl": document.getElementById("githubUrl").value.trim(),
         
         // Education
         "education": () => {
@@ -181,7 +182,6 @@ function gatherData(){
             const skillList = document.getElementById("skillList").getElementsByTagName("li")
             let mySkillList = []
             for(let i = 0; i < skillList.length; i++){
-                // console.log(skillList[i].getElementsByClassName("right")[0].getElementsByTagName("inpu")[0].value)
                 let skill = {
                     "skillName": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[0].value.trim(),
                     "skillProficiency": skillList[i].getElementsByClassName("right")[0].getElementsByTagName("input")[1].value.trim()
@@ -194,7 +194,7 @@ function gatherData(){
 }
 
 function addEducationToResume(resume, outputHTML){
-    gen_text = ""
+    let gen_text = ""
 
     resume.education().forEach((element) => {
         let startDate = (element["startDate"] != "") ? element["startDate"].slice(0,4) : ""
@@ -211,7 +211,7 @@ function addEducationToResume(resume, outputHTML){
 }
 
 function addExperienceToResume(resume, outputHTML){
-    gen_text = ""
+    let gen_text = ""
 
     resume.experience().forEach((element) => {
         let endDate = (element["endDate"] != "") ? element["endDate"] : "Present"
@@ -233,7 +233,7 @@ function addExperienceToResume(resume, outputHTML){
 }
 
 function addProjectsToResume(resume, outputHTML){
-    gen_text = ""
+    let gen_text = ""
 
     resume.projects().forEach((element) => {
         gen_text += '<div class="item">\
@@ -245,7 +245,7 @@ function addProjectsToResume(resume, outputHTML){
 }
 
 function addSkillsToResume(resume, outputHTML){
-    gen_text = ""
+    let gen_text = ""
 
     resume.skills().forEach((element) => {
         gen_text += '<div class="item">\
@@ -261,7 +261,7 @@ function addSkillsToResume(resume, outputHTML){
 }
 
 function generateResumeText(resume){
-    output_text = getTestHTML()
+    let output_text = getTestHTML()
     output_text = addEducationToResume(resume, output_text)
     output_text = addExperienceToResume(resume, output_text)
     output_text = addProjectsToResume(resume, output_text)
@@ -270,15 +270,10 @@ function generateResumeText(resume){
 }
 
 function downloadFile() {
-    let resume = gatherData()
-    // resume.education()
-    // resume.experience()
-    resume.projects()
-    // resume.skills()
+    let resume = gatherData(),
+        filename = resume["personalName"] + "_resume.html",
+        element = document.createElement('a')
 
-    filename = resume["personalName"] + "_resume.html"
-
-    var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(generateResumeText(resume)));
 
     element.setAttribute('download', filename);
@@ -403,7 +398,7 @@ function getTestHTML(){
                                 <!-- <img class="profile" src="assets/images/avatar-icon.svg" alt="profile_icon" /> -->\
                                 <!-- <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" /> -->\
                                 <img class="profile" src="https://avatars0.githubusercontent.com/u/11342204?s=460&v=4" alt="profile_icon" />\
-                                <h1 class="name">Alan Doe</h1>\
+                                <h1 class="name">{{NAME}}</h1>\
                                 <h3 class="tagline">Full Stack Developer</h3>\
                             </div><!--//profile-container-->\
                             <div class="contact-container container-block">\
