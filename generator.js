@@ -93,7 +93,6 @@ function removeProjectItem(project_element){
 
 
 // SKILLS
-
 function addSkillItem(){
 	let skillList = document.getElementById('skillList')
     let skillItem = document.createElement("li")
@@ -236,9 +235,9 @@ function addExperienceToResume(resume, outputHTML){
 function addProjectsToResume(resume, outputHTML){
     gen_text = ""
 
-    resume.experience().forEach((element) => {
+    resume.projects().forEach((element) => {
         gen_text += '<div class="item">\
-                        <span class="project-title">'+element["projectName"]+'</span> - <span class="project-tagline">'+element[projectDescription]+'</span>\
+                        <span class="project-title">'+element["projectName"]+'</span> - <span class="project-tagline">'+element["projectDescription"]+'</span>\
                     </div><!--//item-->\n'
     })
     outputHTML = outputHTML.replace('{{PROJECT-ITEMS}}', gen_text)
@@ -248,7 +247,7 @@ function addProjectsToResume(resume, outputHTML){
 function addSkillsToResume(resume, outputHTML){
     gen_text = ""
 
-    resume.experience().forEach((element) => {
+    resume.skills().forEach((element) => {
         gen_text += '<div class="item">\
                         <h3 class="level-title">'+element["skillName"]+'</h3>\
                         <div class="level-bar">\
@@ -274,7 +273,7 @@ function downloadFile() {
     let resume = gatherData()
     // resume.education()
     // resume.experience()
-    // resume.projects()
+    resume.projects()
     // resume.skills()
 
     filename = resume["personalName"] + "_resume.html"
@@ -291,6 +290,9 @@ function downloadFile() {
     document.body.removeChild(element);
 }
 
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
 
 
 
@@ -333,7 +335,7 @@ function getTestHTML(){
                         .sidebar-wrapper .profile-container { padding: 30px; background: rgba(0, 0, 0, 0.2); text-align: center; color: #fff; }\
                         .sidebar-wrapper .name { font-size: 32px; font-weight: 900; margin-top: 0; margin-bottom: 10px; }\
                         .sidebar-wrapper .tagline { color: rgba(255, 255, 255, 0.6); font-size: 16px; font-weight: 400; margin-top: 0; margin-bottom: 0; }\
-                        .sidebar-wrapper .profile { margin-bottom: 15px; }\
+                        .sidebar-wrapper .profile { margin-bottom: 15px; width:100%; border-radius: 100%;}\
                         .sidebar-wrapper .contact-list .fa { margin-right: 5px; font-size: 18px; vertical-align: middle; }\
                         .sidebar-wrapper .contact-list li { margin-bottom: 15px; }\
                         .sidebar-wrapper .contact-list li:last-child { margin-bottom: 0; }\
@@ -398,7 +400,9 @@ function getTestHTML(){
                         <div class="sidebar-wrapper">\
                             <div class="profile-container">\
                                 <!-- <img class="profile" src="assets/images/profile.png" alt="" /> -->\
-                                <img class="profile" src="assets/images/avatar-icon.svg" alt="profile_icon" />\
+                                <!-- <img class="profile" src="assets/images/avatar-icon.svg" alt="profile_icon" /> -->\
+                                <!-- <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" /> -->\
+                                <img class="profile" src="https://avatars0.githubusercontent.com/u/11342204?s=460&v=4" alt="profile_icon" />\
                                 <h1 class="name">Alan Doe</h1>\
                                 <h3 class="tagline">Full Stack Developer</h3>\
                             </div><!--//profile-container-->\
@@ -467,12 +471,13 @@ function getTestHTML(){
                  \
                     <footer class="footer">\
                         <div class="text-center">\
-                                  <small class="copyright">Designed by <a href="http://dro248.github.io" target="_blank">David Ostler</a> for developers</small>\
+                                  <small class="copyright">Designed by <a href="http://dro248.github.io" target="_blank">David Ostler</a>.</small>\
                         </div><!--//container-->\
                     </footer><!--//footer-->\
                  \
                     <!-- Javascript -->          \
                     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>\
+                    <a href="http://dro248.github.io"></a>\
                     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    \
                     <!-- custom js -->\
                     <script type="text/javascript">\
