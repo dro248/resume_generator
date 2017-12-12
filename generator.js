@@ -118,7 +118,6 @@ function removeSkillItem(skill_element){
 
 
 ///////////////////////////////
-
 // GATHER data and CREATE HTML page from template
 
 function gatherData(){
@@ -260,12 +259,24 @@ function addSkillsToResume(resume, outputHTML){
     return outputHTML
 }
 
+function addPersonalData(resume, outputHTML){
+    outputHTML = outputHTML.replace('{{NAME}}', resume["personalName"])
+    outputHTML = outputHTML.replace('{{PERSONAL-TITLE}}', resume["personalTitle"])
+    outputHTML = outputHTML.replace('{{PERSONAL-PHONE}}', resume["personalPhone"])
+    outputHTML = outputHTML.replace('{{PERSONAL-EMAIL}}', resume["personalEmail"])
+    outputHTML = outputHTML.replace('{{PERSONAL-SITE}}', resume["siteUrl"])
+    outputHTML = outputHTML.replace('{{LINKEDIN-URL}}', resume["linkedInUrl"])
+    outputHTML = outputHTML.replace('{{GITHUB-URL}}', resume["githubUrl"])
+    return outputHTML
+}
+
 function generateResumeText(resume){
     let output_text = getTestHTML()
     output_text = addEducationToResume(resume, output_text)
     output_text = addExperienceToResume(resume, output_text)
     output_text = addProjectsToResume(resume, output_text)
     output_text = addSkillsToResume(resume, output_text)
+    output_text = addPersonalData(resume, output_text)
     return output_text
 }
 
@@ -275,7 +286,6 @@ function downloadFile() {
         element = document.createElement('a')
 
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(generateResumeText(resume)));
-
     element.setAttribute('download', filename);
 
     element.style.display = 'none';
@@ -396,38 +406,33 @@ function getTestHTML(){
                             <div class="profile-container">\
                                 <!-- <img class="profile" src="assets/images/profile.png" alt="" /> -->\
                                 <!-- <img class="profile" src="assets/images/avatar-icon.svg" alt="profile_icon" /> -->\
-                                <!-- <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" /> -->\
-                                <img class="profile" src="https://avatars0.githubusercontent.com/u/11342204?s=460&v=4" alt="profile_icon" />\
+                                <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" />\
+                                <!-- <img class="profile" src="https://avatars0.githubusercontent.com/u/11342204?s=460&v=4" alt="profile_icon" /> -->\
                                 <h1 class="name">{{NAME}}</h1>\
-                                <h3 class="tagline">Full Stack Developer</h3>\
+                                <h3 class="tagline">{{PERSONAL-TITLE}}</h3>\
                             </div><!--//profile-container-->\
                             <div class="contact-container container-block">\
                                 <ul class="list-unstyled contact-list">\
-                                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">alan.doe@website.com</a></li>\
-                                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:0123 456 789">0123 456 789</a></li>\
-                                    <li class="website"><i class="fa fa-globe"></i><a href="http://themes.3rdwavemedia.com/website-templates/free-responsive-website-template-for-developers/" target="_blank">portfoliosite.com</a></li>\
-                                    <li class="linkedin"><i class="fa fa-linkedin"></i><a href="#" target="_blank">linkedin.com/in/alandoe</a></li>\
-                                    <li class="github"><i class="fa fa-github"></i><a href="#" target="_blank">github.com/username</a></li>\
-                                    <li class="twitter"><i class="fa fa-twitter"></i><a href="https://twitter.com/3rdwave_themes" target="_blank">@twittername</a></li>\
+                                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto: {{PERSONAL-EMAIL}}">{{PERSONAL-EMAIL}}</a></li>\
+                                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:{{PERSONAL-PHONE}}">{{PERSONAL-PHONE}}</a></li>\
+                                    <li class="website"><i class="fa fa-globe"></i><a href="{{PERSONAL-SITE}}" target="_blank">{{PERSONAL-SITE}}</a></li>\
+                                    <li class="linkedin"><i class="fa fa-linkedin"></i><a href="{{LINKEDIN-URL}}" target="_blank">{{LINKEDIN-URL}}</a></li>\
+                                    <li class="github"><i class="fa fa-github"></i><a href="{{GITHUB-URL}}" target="_blank">{{GITHUB-URL}}</a></li>\
                                 </ul>\
                             </div><!--//contact-container-->\
-\
 \
                             <!-- EDUCATION -->\
                             <div class="education-container container-block">\
                                 <h2 class="container-block-title">Education</h2>\
-\
                                 {{EDUCATION-ITEMS}}\
-\
                             </div><!--//education-container-->\
                         </div><!--//sidebar-wrapper-->\
 \
                         <div class="main-wrapper">\
-\
                             <section class="section summary-section">\
-                                <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>\
+                                <h2 class="section-title"><i class="fa fa-user"></i>Summary</h2>\
                                 <div class="summary">\
-                                    <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can <a href="http://themes.3rdwavemedia.com/website-templates/orbit-free-resume-cv-template-for-developers/" target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>\
+                                    <p>{{SUMMARY}}</p>\
                                 </div><!--//summary-->\
                             </section><!--//section-->\
 \
@@ -437,9 +442,7 @@ function getTestHTML(){
                             <section class="section experiences-section">\
                                 <h2 class="section-title"><i class="fa fa-briefcase"></i>Experiences</h2>\
                                 {{EXPERIENCE-ITEMS}}\
-\
                             </section><!--//section-->\
-\
 \
 \
 \
@@ -448,8 +451,6 @@ function getTestHTML(){
                                 <h2 class="section-title"><i class="fa fa-archive"></i>Projects</h2>\
                                 {{PROJECT-ITEMS}}\
                             </section><!--//section-->\
-\
-\
 \
 \
 \
