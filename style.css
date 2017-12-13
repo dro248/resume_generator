@@ -36,14 +36,17 @@ body{
 	margin-bottom: 5em;
 }
 
-#generateButton {
-	background-color: #2b6ea5;
+#generateButton, #previewButton {
 	color: white;
 	border-style: none;
 	padding: 15px 20px;
 	margin-top: 15px;
 	transition: background-color .35s;
 	border-radius: 4px;
+}
+
+#generateButton {
+	background-color: #2b6ea5;
 }
 
 #generateButton:hover{
@@ -54,6 +57,13 @@ body{
 	background-color: #00468b;
 }
 
+
+#previewButton {
+	margin-top: -2px;
+	background-color: darkgrey;
+}
+
+#previewButton:hover { background-color: #6f6e6e; }
 
 
 

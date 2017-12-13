@@ -142,14 +142,15 @@
                 </ul>
                 <button class="addItem" onclick="addSkillItem()">+ Add Skill</button>
             </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" id="previewButton" data-toggle="modal" data-target="#exampleModal" onclick="preview()">
+              Preview
+            </button>
+
             <button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
 
 
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="preview()">
-              Preview
-            </button>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal">
