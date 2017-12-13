@@ -137,9 +137,11 @@ function gatherData(){
         "personalTitle": document.getElementById("title").value.trim(),
         "personalPhone": document.getElementById("phone").value.trim(),
         "personalEmail": document.getElementById("email").value.trim(),
+        "personalSummary": document.getElementById("summary").value.trim(),
         "siteUrl": document.getElementById("siteUrl").value.trim(),
         "linkedInUrl": document.getElementById("linkedInUrl").value.trim(),
         "githubUrl": document.getElementById("githubUrl").value.trim(),
+        "photoUrl": document.getElementById("photoUrl").value.trim(),
         
         // Education
         "education": () => {
@@ -276,6 +278,7 @@ function addPersonalData(resume, outputHTML){
     outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-TITLE}}', resume["personalTitle"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-PHONE}}', resume["personalPhone"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-EMAIL}}', resume["personalEmail"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{SUMMARY}}', resume["personalSummary"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-SITE}}', resume["siteUrl"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{LINKEDIN-URL}}', resume["linkedInUrl"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{GITHUB-URL}}', resume["githubUrl"])
@@ -456,7 +459,7 @@ function getTestHTML(){
                             <section class="section summary-section">\
                                 <h2 class="section-title"><i class="fa fa-user"></i>Summary</h2>\
                                 <div class="summary">\
-                                    <p>{{SUMMARY}}</p>\
+                                    {{SUMMARY}}\
                                 </div><!--//summary-->\
                             </section><!--//section-->\
 \
