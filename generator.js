@@ -117,6 +117,17 @@ function removeSkillItem(skill_element){
 
 
 
+// Add function to String.prototype
+String.prototype.replaceAll = function(this_string, search, replace){
+    let target = this_string
+    while(target.indexOf(search) >= 0){
+        target = target.replace(search, replace)
+    }
+    return target
+}
+
+
+
 ///////////////////////////////
 // GATHER data and CREATE HTML page from template
 
@@ -260,13 +271,14 @@ function addSkillsToResume(resume, outputHTML){
 }
 
 function addPersonalData(resume, outputHTML){
-    outputHTML = outputHTML.replace('{{NAME}}', resume["personalName"])
-    outputHTML = outputHTML.replace('{{PERSONAL-TITLE}}', resume["personalTitle"])
-    outputHTML = outputHTML.replace('{{PERSONAL-PHONE}}', resume["personalPhone"])
-    outputHTML = outputHTML.replace('{{PERSONAL-EMAIL}}', resume["personalEmail"])
-    outputHTML = outputHTML.replace('{{PERSONAL-SITE}}', resume["siteUrl"])
-    outputHTML = outputHTML.replace('{{LINKEDIN-URL}}', resume["linkedInUrl"])
-    outputHTML = outputHTML.replace('{{GITHUB-URL}}', resume["githubUrl"])
+
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{NAME}}', resume["personalName"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-TITLE}}', resume["personalTitle"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-PHONE}}', resume["personalPhone"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-EMAIL}}', resume["personalEmail"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-SITE}}', resume["siteUrl"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{LINKEDIN-URL}}', resume["linkedInUrl"])
+    outputHTML = outputHTML.replaceAll(outputHTML, '{{GITHUB-URL}}', resume["githubUrl"])
     return outputHTML
 }
 
@@ -326,8 +338,9 @@ function getTestHTML(){
                     <![endif]-->\
                 </head>\
                 <body>\
-                    <!-- Theme CSS -->  \
+                    <!-- Theme CSS -->\
                     <style>\
+                        .email .fa, .phone. .fa, .website .fa, .linkedin .fa, .github .fa { display: inline !important; }\
                         body { font-family: "Roboto", sans-serif; color: #545E6C; background: #f5f5f5; font-size: 14px; padding: 30px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }\
                         h1, h2, h3, h4, h5, h6 { font-weight: 700; }\
                         a { color: #2d7788; -webkit-transition: all 0.4s ease-in-out; -moz-transition: all 0.4s ease-in-out; -ms-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; }\
@@ -336,12 +349,12 @@ function getTestHTML(){
                         p { line-height: 1.5; }\
                         .wrapper { background: #42A8C0; max-width: 960px; margin: 0 auto; position: relative; -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); }\
                         .sidebar-wrapper { background: #42A8C0; position: absolute; right: 0; width: 240px; height: 100%; min-height: 800px; color: #fff; }\
-                        .sidebar-wrapper a { color: #fff; }\
+                        .sidebar-wrapper a { color: #fff; word-wrap: break-word; }\
                         .sidebar-wrapper .profile-container { padding: 30px; background: rgba(0, 0, 0, 0.2); text-align: center; color: #fff; }\
                         .sidebar-wrapper .name { font-size: 32px; font-weight: 900; margin-top: 0; margin-bottom: 10px; }\
                         .sidebar-wrapper .tagline { color: rgba(255, 255, 255, 0.6); font-size: 16px; font-weight: 400; margin-top: 0; margin-bottom: 0; }\
                         .sidebar-wrapper .profile { margin-bottom: 15px; width:100%; border-radius: 100%;}\
-                        .sidebar-wrapper .contact-list .fa { margin-right: 5px; font-size: 18px; vertical-align: middle; }\
+                        .sidebar-wrapper .contact-list .fa { margin-right: 5px; font-size: 18px; vertical-align: middle; display: block; }\
                         .sidebar-wrapper .contact-list li { margin-bottom: 15px; }\
                         .sidebar-wrapper .contact-list li:last-child { margin-bottom: 0; }\
                         .sidebar-wrapper .contact-list .email .fa { font-size: 14px; }\
