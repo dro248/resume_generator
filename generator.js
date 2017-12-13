@@ -22,7 +22,7 @@ function addEducationItem(){
                                     <option value="Ph.D.">Ph.D.</option>\
                                 </select>\
                                 <input type="text" class="form-control schoolName" placeholder="School Name">\
-                                <input type="text" class="form-control degreeName" placeholder="Degree Name">\
+                                <input type="text" class="form-control degreeName" placeholder="Major">\
                                 <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">\
                                 <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">\
                             </div>\
@@ -306,6 +306,17 @@ function downloadFile() {
     element.click();
     document.body.removeChild(element);
 }
+
+function preview() {
+    let resume = gatherData(),
+        html = generateResumeText(resume),
+        iframe = document.getElementById("previewFrame"),
+        iframeDoc = iframe.contentDocument || iframe.contentWindow.document
+
+    iframeDoc.body.innerHTML = html
+}
+
+
 
 function checkURL(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);

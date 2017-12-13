@@ -60,9 +60,9 @@
                                     <option value="Ph.D.">Ph.D.</option>
                                 </select>
                                 <input type="text" class="form-control schoolName" placeholder="School Name">
-                                <input type="text" class="form-control degreeName" placeholder="Degree Name">
-                                <label for="startDate">Start Date:&nbsp;</label><input type="date" name="startDate" class="form-control date" placeholder="Start Date">
-                                <label for="endDate">End Date:&nbsp;&nbsp;</label><input type="date" name="endDate" class="form-control date" placeholder="End Date">
+                                <input type="text" class="form-control degreeName" placeholder="Major">
+                                <input type="text" name="startDate" class="form-control year" placeholder="Start Year">
+                                <input type="text" name="endDate" class="form-control year" placeholder="End Year">
                             </div>
                         </div>
                     </li>
@@ -143,6 +143,36 @@
                 <button class="addItem" onclick="addSkillItem()">+ Add Skill</button>
             </div>
             <button onclick="downloadFile()" id="generateButton">Generate &amp; Download Resume</button>
+
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="preview()">
+              Preview
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Resume Preview</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe id="previewFrame"></iframe>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
         </div>
         <script src="generator.js"></script>
     </body>
