@@ -157,7 +157,6 @@ function gatherData(){
                 }
                 myEdList.push(education)
             }
-            console.log(myEdList)
             return myEdList
         },
 
@@ -282,6 +281,8 @@ function addPersonalData(resume, outputHTML){
     outputHTML = outputHTML.replaceAll(outputHTML, '{{PERSONAL-SITE}}', resume["siteUrl"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{LINKEDIN-URL}}', resume["linkedInUrl"])
     outputHTML = outputHTML.replaceAll(outputHTML, '{{GITHUB-URL}}', resume["githubUrl"])
+    outputHTML = (resume["photoUrl"] != "") ? outputHTML.replaceAll(outputHTML, '{{PHOTO-URL}}', resume["photoUrl"]) 
+                                            : outputHTML.replaceAll(outputHTML, '{{PHOTO-URL}}', "https://www.w3schools.com/howto/img_avatar.png")
     return outputHTML
 }
 
@@ -433,7 +434,8 @@ function getTestHTML(){
                             <div class="profile-container">\
                                 <!-- <img class="profile" src="assets/images/profile.png" alt="" /> -->\
                                 <!-- <img class="profile" src="assets/images/avatar-icon.svg" alt="profile_icon" /> -->\
-                                <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" />\
+                                <!-- <img class="profile" src="https://www.w3schools.com/howto/img_avatar.png" alt="profile_icon" /> -->\
+                                <img class="profile" src="{{PHOTO-URL}}" alt="profile_icon" />\
                                 <!-- <img class="profile" src="https://avatars0.githubusercontent.com/u/11342204?s=460&v=4" alt="profile_icon" /> -->\
                                 <h1 class="name">{{NAME}}</h1>\
                                 <h3 class="tagline">{{PERSONAL-TITLE}}</h3>\
