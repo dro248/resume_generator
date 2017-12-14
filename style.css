@@ -2,8 +2,8 @@ ul {
 	list-style-type: none;
 }
 
-button {
-	outline: none;
+button, button:focus {
+	outline: none !important;
 }
 
 body{
@@ -184,4 +184,7 @@ body{
 #previewFrame {
 	width: 100%;
 	min-height: 600px;
+	border: none;
 }
+
+.modal-title { display: inline-block; }
