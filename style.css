@@ -110,8 +110,9 @@ body{
 /* EXPERIENCE */
 
 .jobTitle, .companyName {
-	width: 49%;
+	width: 40%;
 	display: inline;
+	margin-right: 1em;
 }
 
 .date {

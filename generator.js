@@ -103,6 +103,7 @@ function addSkillItem(){
                             </div>\
                             <div class="right">\
                                 <input type="text" class="form-control jobTitle" placeholder="Skill Name">\
+                                <label>Skill Level:</label>\
                                 <input type="range" class="skillSlider" min="1" max="100" value="1">\
                             </div>\
                         </div>'
@@ -144,7 +145,7 @@ function gatherData(){
         "photoUrl": document.getElementById("photoUrl").value.trim(),
         
         // Education
-        "education": () => {
+        "education": (() => {
             const educationList = document.getElementById("educationList").getElementsByTagName("li")
             let myEdList = []
             for(let i = 0; i < educationList.length; i++){
@@ -158,9 +159,9 @@ function gatherData(){
                 myEdList.push(education)
             }
             return myEdList
-        },
+        })(),
 
-        "experience": () => {
+        "experience": (() => {
             const experienceList = document.getElementById("experienceList").getElementsByTagName("li")
             let myExpList = []
             for(let i = 0; i < experienceList.length; i++){
@@ -174,9 +175,9 @@ function gatherData(){
                 myExpList.push(experience)
             }
             return myExpList
-        },
+        })(),
 
-        "projects": () => {
+        "projects": (() => {
             const projectList = document.getElementById("projectList").getElementsByTagName("li")
             let myProjList = []
             for(let i = 0; i < projectList.length; i++){
@@ -187,9 +188,9 @@ function gatherData(){
                 myProjList.push(project)
             }
             return myProjList
-        },
+        })(),
 
-        "skills": () => {
+        "skills": (() => {
             const skillList = document.getElementById("skillList").getElementsByTagName("li")
             let mySkillList = []
             for(let i = 0; i < skillList.length; i++){
@@ -200,14 +201,14 @@ function gatherData(){
                 mySkillList.push(skill)
             }
             return mySkillList
-        }
+        })()
     }
 }
 
 function addEducationToResume(resume, outputHTML){
     let gen_text = ""
 
-    resume.education().forEach((element) => {
+    resume.education.forEach((element) => {
         let startDate = (element["startDate"] != "") ? element["startDate"].slice(0,4) : ""
         let endDate = (element["endDate"] != "") ? element["endDate"].slice(0,4) : ""
 
@@ -224,7 +225,7 @@ function addEducationToResume(resume, outputHTML){
 function addExperienceToResume(resume, outputHTML){
     let gen_text = ""
 
-    resume.experience().forEach((element) => {
+    resume.experience.forEach((element) => {
         let endDate = (element["endDate"] != "") ? element["endDate"] : "Present"
         gen_text += '<div class="item">\
                         <div class="meta">\
@@ -246,7 +247,7 @@ function addExperienceToResume(resume, outputHTML){
 function addProjectsToResume(resume, outputHTML){
     let gen_text = ""
 
-    resume.projects().forEach((element) => {
+    resume.projects.forEach((element) => {
         gen_text += '<div class="item">\
                         <span class="project-title">'+element["projectName"]+'</span> - <span class="project-tagline">'+element["projectDescription"]+'</span>\
                     </div><!--//item-->\n'
@@ -258,7 +259,7 @@ function addProjectsToResume(resume, outputHTML){
 function addSkillsToResume(resume, outputHTML){
     let gen_text = ""
 
-    resume.skills().forEach((element) => {
+    resume.skills.forEach((element) => {
         gen_text += '<div class="item">\
                         <h3 class="level-title">'+element["skillName"]+'</h3>\
                         <div class="level-bar">\
